@@ -1,0 +1,6 @@
+Primary (Burnt Orange): orange-600 🔥 (Rich and warm, perfect for buttons or accents.)
+Secondary (Rust Brown): amber-700 🏺 (Deeper, muted orange for a vintage feel.)
+Background (Warm Beige): stone-200 ☁️ (Soft and neutral for a natural look.)
+Text (Deep Mocha Brown): stone-800 🍫 (Warm and easy on the eyes.)
+Accent (Muted Copper): orange-400 🍁 (Adds subtle warmth without being too bold.)
+Hover (Terracotta Red): rose-600 🌄 (A warm, dusty red for interactive elements.)

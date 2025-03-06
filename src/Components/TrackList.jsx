@@ -13,8 +13,6 @@ const TrackList = () => {
       return;
     }
 
-    console.log("Access Token:", accessToken); // Debugging
-
     axios
       .get(`http://localhost:5001/top-tracks?token=${accessToken}`)
       .then((response) => {
@@ -23,20 +21,30 @@ const TrackList = () => {
       })
       .catch((error) => console.error("Error fetching top tracks:", error));
   }, [accessToken]);
+
   return (
-    <div>
+    <div className="w-1/4">
       <h1>Your Top Tracks</h1>
       {topTracks.length > 0 ? (
-        <ul>
+        <ul className="space-y-4">
           {topTracks.map((track) => (
-            <li key={track.id}>
-              {track.name} -{" "}
-              {track.artists.map((artist) => artist.name).join(", ")}
+            <li
+              key={track.id}
+              className="bg-orange-600 border-3 border-amber-700 rounded-r-full p-3 flex text-stone-800"
+            >
               <img
                 src={track.album.images[0].url}
                 alt={track.album.name}
                 width="100"
+                className="rounded-full"
               />
+              <div className="flex flex-col justify-center ms-4">
+                <h2 className="text-3xl">{track.name}</h2>
+                <p className="text-2xl">
+                  {track.artists.map((artist) => artist.name).join(", ")} -{" "}
+                  {track.album.name}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

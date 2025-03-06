@@ -69,7 +69,7 @@ app.get("/top-tracks", async (req, res) => {
 
   try {
     const response = await axios.get(
-      "https://api.spotify.com/v1/me/top/tracks?time_range=short_term",
+      "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10",
       {
         headers: { Authorization: `Bearer ${accessToken}` },
       }
@@ -81,6 +81,47 @@ app.get("/top-tracks", async (req, res) => {
       error.response?.data || error.message
     );
     res.status(500).json({ error: "Failed to fetch top tracks" });
+  }
+});
+
+// Fetch user's profile data
+app.get("/user-profile", async (req, res) => {
+  const accessToken = req.query.token;
+
+  if (!accessToken) {
+    return res.status(400).json({ error: "Missing access token" });
+  }
+
+  try {
+    const response = await axios.get("https://api.spotify.com/v1/me/", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    res.status(500).json({ error: "Failed to fetch user data" });
+  }
+});
+
+// Get users recently played tracks
+app.get("/recently-played-tracks", async (req, res) => {
+  const accessToken = req.query.token;
+
+  if (!accessToken) {
+    return res.status(400).json({ error: "Missing access token" });
+  }
+
+  try {
+    const response = await axios.get(
+      "https://api.spotify.com/v1/me/player/recently-played?limit=10",
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching recently played tracks", error);
+    res.status(500).json({ error: "Failed to fetch recenlty played tracks" });
   }
 });
 
