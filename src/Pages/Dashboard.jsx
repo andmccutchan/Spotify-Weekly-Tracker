@@ -1,3 +1,4 @@
+import RecentlyPlayed from "../Components/RecentlyPlayed";
 import TrackList from "../Components/TrackList";
 import User from "../Components/User";
 
@@ -6,6 +7,7 @@ const Dashboard = () => {
     <div className="w-full bg-stone-200">
       {/* <TrackList /> */}
       <User />
+      <RecentlyPlayed />
     </div>
   );
 };

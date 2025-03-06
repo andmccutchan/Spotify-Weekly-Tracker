@@ -7,7 +7,9 @@ const Login = () => {
   return (
     <div>
       <h1>Spotify OAuth</h1>
-      <button onClick={handleLogin}>Login with Spotify</button>
+      <button className="bg-amber-700 rounded" onClick={handleLogin}>
+        Login with Spotify
+      </button>
     </div>
   );
 };
