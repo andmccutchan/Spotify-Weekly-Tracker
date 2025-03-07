@@ -125,6 +125,33 @@ app.get("/recently-played-tracks", async (req, res) => {
   }
 });
 
+app.get("/search", async (req, res) => {
+  const accessToken = req.query.token;
+  const searchQuery = req.query.q; // Get search query
+
+  if (!accessToken) {
+    return res.status(400).json({ error: "Missing access token" });
+  }
+  if (!searchQuery) {
+    return res.status(400).json({ error: "Missing search query" });
+  }
+
+  try {
+    const response = await axios.get("https://api.spotify.com/v1/search", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+      params: {
+        q: searchQuery,
+        type: "artist,track", // Search for both
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error searching", error);
+    res.status(500).json({ error: "Failed to search" });
+  }
+});
+
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );

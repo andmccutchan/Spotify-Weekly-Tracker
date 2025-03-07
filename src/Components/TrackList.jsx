@@ -16,8 +16,7 @@ const TrackList = () => {
     axios
       .get(`http://localhost:5001/top-tracks?token=${accessToken}`)
       .then((response) => {
-        console.log("API Response:", response.data); // Debugging
-        setTopTracks(response.data.items); // FIXED: Should be `items`
+        setTopTracks(response.data.items);
       })
       .catch((error) => console.error("Error fetching top tracks:", error));
   }, [accessToken]);
@@ -27,7 +26,7 @@ const TrackList = () => {
       <h1 className="text-5xl text-stone-800 mb-4">Your Top Tracks</h1>
       {topTracks.length > 0 ? (
         <ul className="space-y-4">
-          {topTracks.map((track, index) => (
+          {topTracks.map((track) => (
             <li
               key={track.id}
               className="bg-orange-700 rounded-full flex text-orange-300 shadow"
