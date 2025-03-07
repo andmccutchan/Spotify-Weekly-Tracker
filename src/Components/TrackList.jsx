@@ -24,21 +24,21 @@ const TrackList = () => {
 
   return (
     <div className="w-1/4">
-      <h1>Your Top Tracks</h1>
+      <h1 className="text-5xl text-stone-800 mb-4">Your Top Tracks</h1>
       {topTracks.length > 0 ? (
         <ul className="space-y-4">
-          {topTracks.map((track) => (
+          {topTracks.map((track, index) => (
             <li
               key={track.id}
-              className="bg-orange-600 border-3 border-amber-700 rounded-r-full p-3 flex text-stone-800"
+              className="bg-orange-700 rounded-full flex text-orange-300 shadow"
             >
               <img
                 src={track.album.images[0].url}
                 alt={track.album.name}
                 width="100"
-                className="rounded-full"
+                className=""
               />
-              <div className="flex flex-col justify-center ms-4">
+              <div className="flex flex-col justify-center ms-4 px-3">
                 <h2 className="text-3xl">{track.name}</h2>
                 <p className="text-2xl">
                   {track.artists.map((artist) => artist.name).join(", ")} -{" "}

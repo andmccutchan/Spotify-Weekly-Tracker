@@ -18,8 +18,9 @@ const User = () => {
     fetchUserProfile();
   }, [accessToken]);
   return (
-    <div className="bg-stone-200 text-stone-800 min-h-screen">
+    <div className="bg-stone-200 text-stone-800">
       <h1>{userInfo.display_name}</h1>
+      <h2>{userInfo.email}</h2>
     </div>
   );
 };

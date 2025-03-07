@@ -24,10 +24,14 @@ const RecentlyPlayed = () => {
   }, [accessToken]);
 
   return (
-    <div>
+    <div className="text-stone-800">
+      <h1>Recently Played tracks</h1>
       <ul>
         {recentTracks.map((item) => (
-          <li key={item.track.id}>{item.track.name}</li>
+          // console.log(item.track.name)
+          <li key={item.track.id}>
+            {item.track.name} - {item.track.album.name}
+          </li>
         ))}
       </ul>
     </div>

@@ -4,10 +4,10 @@ import User from "../Components/User";
 
 const Dashboard = () => {
   return (
-    <div className="w-full bg-stone-200">
-      {/* <TrackList /> */}
-      <User />
-      <RecentlyPlayed />
+    <div>
+      <TrackList />
+      {/* <User />
+      <RecentlyPlayed /> */}
     </div>
   );
 };
