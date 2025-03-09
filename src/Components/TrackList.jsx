@@ -12,13 +12,18 @@ const TrackList = () => {
       console.error("No access token found");
       return;
     }
-
-    axios
-      .get(`http://localhost:5001/top-tracks?token=${accessToken}`)
-      .then((response) => {
+    const fetchTrackList = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/top-tracks?token=${accessToken}`
+        );
         setTopTracks(response.data.items);
-      })
-      .catch((error) => console.error("Error fetching top tracks:", error));
+      } catch (error) {
+        console.error("Failed to fetch top tracks:", error);
+      }
+    };
+
+    fetchTrackList();
   }, [accessToken]);
 
   return (

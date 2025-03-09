@@ -6,7 +6,7 @@ import User from "../Components/User";
 const Dashboard = () => {
   return (
     <div className="flex">
-      <TrackList />
+      {/* <TrackList /> */}
       <Search />
       {/* <User />
       <RecentlyPlayed /> */}

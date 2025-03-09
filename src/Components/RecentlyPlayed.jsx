@@ -14,11 +14,15 @@ const RecentlyPlayed = () => {
     }
 
     const fetchRecentTracks = async () => {
-      const tracksResponse = await axios.get(
-        `http://localhost:5001/recently-played-tracks?token=${accessToken}`
-      );
+      try {
+        const tracksResponse = await axios.get(
+          `http://localhost:5001/recently-played-tracks?token=${accessToken}`
+        );
 
-      setRecentTracks(tracksResponse.data.items);
+        setRecentTracks(tracksResponse.data.items);
+      } catch (error) {
+        console.error("Error fetching recent tracks:", error);
+      }
     };
     fetchRecentTracks();
   }, [accessToken]);
