@@ -128,6 +128,7 @@ app.get("/recently-played-tracks", async (req, res) => {
 app.get("/search", async (req, res) => {
   const accessToken = req.query.token;
   const searchQuery = req.query.q; // Get search query
+  const searchType = req.query.type;
 
   if (!accessToken) {
     return res.status(400).json({ error: "Missing access token" });
@@ -141,7 +142,7 @@ app.get("/search", async (req, res) => {
       headers: { Authorization: `Bearer ${accessToken}` },
       params: {
         q: searchQuery,
-        type: "artist,track", // Search for both
+        type: searchType, // Search for both
       },
     });
 

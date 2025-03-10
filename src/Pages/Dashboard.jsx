@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <div className="flex">
       {/* <TrackList /> */}
-      <Search />
+      {/* <Search /> */}
       {/* <User />
       <RecentlyPlayed /> */}
     </div>
